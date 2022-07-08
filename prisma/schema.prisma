@@ -8,10 +8,11 @@ datasource db {
 }
 
 model Product {
-  id       String  @id @default(uuid())
-  name     String
-  quantity Decimal
-  price    Decimal
+  id        String   @id @default(uuid())
+  name      String
+  quantity  Decimal
+  price     Decimal
+  createdAt DateTime @default(now())
 
   @@map("products")
 }
