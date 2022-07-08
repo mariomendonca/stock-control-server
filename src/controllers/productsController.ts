@@ -22,6 +22,27 @@ export class ProductsController {
     }
   }
 
+  async handleGetAll(req: Request, res: Response): Promise<Response> {
+    try {
+      const products = await prisma.product.findMany()
+      return res.status(200).json(products)
+    } catch {
+      return res.status(400).send()
+    }
+  }
+
+  async handleGetById(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params
+    try {
+      const products = await prisma.product.findUnique({
+        where: { id }
+      })
+      return res.status(200).json(products)
+    } catch {
+      return res.status(400).send()
+    }
+  }
+
   async handleUpdate(req: Request, res: Response): Promise<Response> {
     const { id } = req.params
     const {
