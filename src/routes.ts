@@ -6,4 +6,5 @@ const productsController = new ProductsController()
 export const router = Router()
 
 router.post('/product', productsController.handleCreate)
+router.put('/product/:id', productsController.handleUpdate)
 router.delete('/product/:id', productsController.handleDelete)
