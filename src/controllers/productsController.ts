@@ -24,7 +24,11 @@ export class ProductsController {
 
   async handleGetAll(req: Request, res: Response): Promise<Response> {
     try {
-      const products = await prisma.product.findMany()
+      const products = await prisma.product.findMany({
+        include: {
+          purchases: true
+        }
+      })
       return res.status(200).json(products)
     } catch {
       return res.status(400).send()
