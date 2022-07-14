@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { prisma } from "../prismaClient";
+import { Request, Response } from "express"
+import { prisma } from "../prismaClient"
 
 export class PurchasesController {
   async handleCreate(req: Request, res: Response): Promise<Response> {
